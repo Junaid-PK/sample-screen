@@ -3,7 +3,7 @@ import BottomNavigationBar from '@/components/BottomNavigationBar';
 import RankingsList from '@/components/RankingsList';
 import TopNavigationBar from '@/components/TopNavigationBar';
 import { rankingOutlets } from '@/constants/data';
-import { useRouter, usePathname } from 'expo-router';
+import { usePathname, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';

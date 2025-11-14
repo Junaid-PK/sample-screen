@@ -19,14 +19,14 @@ export default function NewsArticleCard({ article }: NewsArticleCardProps) {
       <View style={styles.footer}>
         <Text style={styles.timestamp}>{article.timestamp}</Text>
         <View style={styles.actions}>
-          <TouchableOpacity style={styles.actionButton} activeOpacity={0.7}>
+          <TouchableOpacity style={styles.iconCircle} activeOpacity={0.7}>
             <Text style={styles.emoji}>😊</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton} activeOpacity={0.7}>
-            <IconSymbol name="bubble.left" size={18} color="#666666" />
+          <TouchableOpacity style={styles.iconCircle} activeOpacity={0.7}>
+            <IconSymbol name="bubble.left" size={16} color="#666666" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.shareButton} activeOpacity={0.7}>
-            <IconSymbol name="paperplane" size={18} color="#666666" />
+          <TouchableOpacity style={styles.iconCircle} activeOpacity={0.7}>
+            <IconSymbol name="paperplane" size={16} color="#666666" />
           </TouchableOpacity>
         </View>
       </View>
@@ -41,11 +41,6 @@ const styles = StyleSheet.create({
     padding: 16,
     marginHorizontal: 16,
     marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 2,
     position: 'relative',
   },
   breakingBadge: {
@@ -68,31 +63,35 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 22,
     color: '#000000',
-    marginTop: 8,
     marginBottom: 12,
   },
   footer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: 8,
   },
   timestamp: {
     fontSize: 13,
-    color: '#666666',
+    color: '#999999',
   },
   actions: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 8,
   },
-  actionButton: {
-    padding: 4,
+  iconCircle: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   emoji: {
-    fontSize: 18,
-  },
-  shareButton: {
-    padding: 4,
+    fontSize: 16,
   },
 });
 

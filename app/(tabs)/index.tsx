@@ -5,7 +5,7 @@ import NewsArticleCard from '@/components/NewsArticleCard';
 import ProfileHeader from '@/components/ProfileHeader';
 import TopNavigationBar from '@/components/TopNavigationBar';
 import { contentSources, newsArticles } from '@/constants/data';
-import { useRouter, usePathname } from 'expo-router';
+import { usePathname, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
