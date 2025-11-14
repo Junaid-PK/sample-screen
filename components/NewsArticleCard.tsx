@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    zIndex: 1,
   },
   breakingBadge: {
     position: 'absolute',
@@ -115,6 +116,7 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginTop: 0,
     position: 'relative',
+    zIndex: 2,
   },
   timeSection: {
     flexDirection: 'row',
@@ -141,6 +143,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 14,
     overflow: 'hidden',
+    zIndex: 3,
   },
   semiCircleIcon: {
     width: 28,
