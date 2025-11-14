@@ -30,6 +30,7 @@ const MAPPING = {
   'chart.line.uptrend.xyaxis': 'trending-up',
   'chevron.up': 'keyboard-arrow-up',
   'minus': 'remove',
+  'arrows.down.up': 'swap-vert',
 } as IconMapping;
 
 /**

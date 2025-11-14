@@ -55,7 +55,7 @@ export default function RankingsList({ outlets }: RankingsListProps) {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Outlets</Text>
         <TouchableOpacity style={styles.sortButton} activeOpacity={0.7}>
-          <IconSymbol name="chevron.up" size={18} color="#455468" />
+          <IconSymbol name="arrows.down.up" size={18} color="#455468" />
           <Text style={styles.sortText}>Followers</Text>
         </TouchableOpacity>
       </View>
