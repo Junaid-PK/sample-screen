@@ -149,9 +149,10 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '800',
     color: '#FFFFFF',
-    top: '50%',
-    left: '50%',
-    transform: [{ translateX: -6.5 }, { translateY: -6.5 }],
+    top: 8,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
   },
   rankNumberText: {
     fontSize: 14,

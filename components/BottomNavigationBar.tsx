@@ -12,8 +12,10 @@ export default function BottomNavigationBar({ activeTab }: BottomNavigationBarPr
       <View style={styles.content}>
         <Text style={styles.countryCode}>961</Text>
         <TouchableOpacity style={styles.navItem} activeOpacity={0.7}>
-          <View style={[styles.iconContainer, activeTab === 'list' && styles.activeIcon]}>
-            <IconSymbol name="list.bullet" size={24} color={activeTab === 'list' ? '#FF0000' : '#666666'} />
+          <View style={[styles.iconContainer, activeTab === 'list' && styles.activeIconContainer]}>
+            <View style={[styles.listIcon, activeTab === 'list' && styles.activeListIcon]}>
+              <IconSymbol name="list.bullet" size={20} color="#FFFFFF" />
+            </View>
           </View>
           {activeTab === 'list' && <Text style={styles.navLabel}>List</Text>}
         </TouchableOpacity>
@@ -61,10 +63,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  activeIcon: {
-    backgroundColor: 'rgba(255, 0, 0, 0.1)',
-    borderRadius: 8,
-    padding: 4,
+  activeIconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  listIcon: {
+    width: 32,
+    height: 32,
+    backgroundColor: '#E0E0E0',
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activeListIcon: {
+    backgroundColor: '#FF0000',
   },
   navLabel: {
     fontSize: 10,

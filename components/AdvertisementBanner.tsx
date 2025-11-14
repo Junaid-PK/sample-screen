@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: '#FFD700',
     position: 'relative',
-    minHeight: 200,
+    minHeight: 180,
   },
   adLabel: {
     position: 'absolute',
@@ -64,10 +64,12 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     padding: 16,
+    minHeight: 180,
   },
   leftSection: {
-    flex: 1,
+    flex: 1.2,
     position: 'relative',
+    justifyContent: 'flex-start',
   },
   slowBurger: {
     fontSize: 12,
@@ -89,20 +91,23 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: 0,
-    right: 0,
-    height: 120,
+    width: '60%',
+    height: 140,
     backgroundColor: '#FF6B6B',
     borderRadius: 8,
+    overflow: 'hidden',
   },
   carImage: {
     flex: 1,
     backgroundColor: '#FF8C8C',
+    borderRadius: 8,
   },
   rightSection: {
     flex: 1,
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
-    paddingLeft: 16,
+    paddingLeft: 12,
+    paddingTop: 8,
   },
   payButton: {
     backgroundColor: '#FFFFFF',
