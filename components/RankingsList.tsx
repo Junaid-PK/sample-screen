@@ -10,31 +10,31 @@ interface RankingsListProps {
 function RankIcon({ rank }: { rank: number }) {
   if (rank === 1) {
     return (
-      <View style={[styles.rankIcon, styles.goldMedal]}>
-        <IconSymbol name="medal.fill" size={28} color="#FFD700" />
-        <Text style={styles.rankNumber}>1</Text>
+      <View style={styles.rankIconContainer}>
+        <IconSymbol name="medal.fill" size={24} color="#FFD700" />
+        <Text style={styles.medalRankNumber}>1</Text>
       </View>
     );
   }
   if (rank === 2) {
     return (
-      <View style={[styles.rankIcon, styles.silverMedal]}>
-        <IconSymbol name="medal.fill" size={28} color="#C0C0C0" />
-        <Text style={styles.rankNumber}>2</Text>
+      <View style={styles.rankIconContainer}>
+        <IconSymbol name="medal.fill" size={24} color="#C0C0C0" />
+        <Text style={styles.medalRankNumber}>2</Text>
       </View>
     );
   }
   if (rank === 3) {
     return (
-      <View style={[styles.rankIcon, styles.bronzeMedal]}>
-        <IconSymbol name="medal.fill" size={28} color="#CD7F32" />
-        <Text style={styles.rankNumber}>3</Text>
+      <View style={styles.rankIconContainer}>
+        <IconSymbol name="medal.fill" size={24} color="#CD7F32" />
+        <Text style={styles.medalRankNumber}>3</Text>
       </View>
     );
   }
   return (
-    <View style={[styles.rankIcon, styles.numberRank]}>
-      <Text style={styles.rankNumberText}>{rank}</Text>
+    <View style={styles.numberRankContainer}>
+      <Text style={styles.numberRankText}>{rank}</Text>
     </View>
   );
 }
@@ -46,7 +46,7 @@ function TrendIndicator({ trend }: { trend: 'up' | 'down' | 'neutral' }) {
   if (trend === 'down') {
     return <IconSymbol name="arrow.down" size={16} color="#FF0000" />;
   }
-  return <View style={styles.neutralTrend} />;
+  return <IconSymbol name="minus" size={16} color="#CCCCCC" />;
 }
 
 export default function RankingsList({ outlets }: RankingsListProps) {
@@ -54,27 +54,32 @@ export default function RankingsList({ outlets }: RankingsListProps) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Outlets</Text>
-        <View style={styles.sortIndicator}>
-          <Text style={styles.sortText}>↓↑ Followers</Text>
-        </View>
+        <TouchableOpacity style={styles.sortButton} activeOpacity={0.7}>
+          <IconSymbol name="chevron.up" size={18} color="#455468" />
+          <Text style={styles.sortText}>Followers</Text>
+        </TouchableOpacity>
       </View>
-      <ScrollView style={styles.list}>
+      <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
         {outlets.map((outlet) => (
           <View key={outlet.id} style={styles.outletItem}>
             <RankIcon rank={outlet.rank} />
-            <View style={styles.logoContainer}>
-              <View style={styles.logo}>
-                <Text style={styles.logoText}>{outlet.logo}</Text>
+            <View style={styles.channelContainer}>
+              <View style={styles.logoContainer}>
+                <View style={styles.logo}>
+                  <Text style={styles.logoText}>{outlet.logo}</Text>
+                </View>
+              </View>
+              <View style={styles.channelInfo}>
+                <Text style={styles.outletName}>{outlet.name}</Text>
+                <Text style={styles.followers}>{outlet.followers} followers</Text>
+              </View>
+              <View style={styles.actionsContainer}>
+                <TouchableOpacity style={styles.followButton} activeOpacity={0.7}>
+                  <Text style={styles.followButtonText}>Follow</Text>
+                </TouchableOpacity>
+                <TrendIndicator trend={outlet.trend} />
               </View>
             </View>
-            <View style={styles.outletInfo}>
-              <Text style={styles.outletName}>{outlet.name}</Text>
-              <Text style={styles.followers}>{outlet.followers} followers</Text>
-            </View>
-            <TouchableOpacity style={styles.followButton} activeOpacity={0.7}>
-              <Text style={styles.followButtonText}>Follow</Text>
-            </TouchableOpacity>
-            <TrendIndicator trend={outlet.trend} />
           </View>
         ))}
       </ScrollView>
@@ -96,20 +101,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 12,
+    gap: 8,
   },
   headerTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: '500',
     color: '#000000',
+    lineHeight: 16,
   },
-  sortIndicator: {
+  sortButton: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 9999,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+    backgroundColor: '#FFFFFF',
   },
   sortText: {
     fontSize: 14,
-    color: '#666666',
-    fontWeight: '400',
+    fontWeight: '500',
+    color: '#455468',
+    lineHeight: 20,
+    letterSpacing: -0.0143,
   },
   list: {
     flex: 1,
@@ -117,55 +133,62 @@ const styles = StyleSheet.create({
   outletItem: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 4,
     paddingHorizontal: 16,
-    paddingVertical: 12,
-    gap: 12,
+    paddingVertical: 8,
+    alignSelf: 'stretch',
   },
-  rankIcon: {
-    width: 44,
-    height: 44,
+  rankIconContainer: {
+    width: 24,
+    height: 24,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
   },
-  goldMedal: {
-    // Gold medal styling
-  },
-  silverMedal: {
-    // Silver medal styling
-  },
-  bronzeMedal: {
-    // Bronze medal styling
-  },
-  numberRank: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#E0E0E0',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  rankNumber: {
+  medalRankNumber: {
     position: 'absolute',
-    fontSize: 13,
-    fontWeight: '800',
+    fontSize: 12,
+    fontWeight: '600',
     color: '#FFFFFF',
-    top: 8,
+    lineHeight: 15,
+    top: 4,
     left: 0,
     right: 0,
     textAlign: 'center',
   },
-  rankNumberText: {
-    fontSize: 14,
+  numberRankContainer: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#E0E0E0',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  numberRankText: {
+    fontSize: 12,
     fontWeight: '600',
     color: '#666666',
+    lineHeight: 15,
+    textAlign: 'center',
+  },
+  channelContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    paddingVertical: 9,
+    paddingRight: 9,
+    paddingLeft: 0,
   },
   logoContainer: {
-    marginRight: 4,
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logo: {
-    width: 48,
-    height: 48,
+    width: 40,
+    height: 40,
     backgroundColor: '#FF0000',
     borderRadius: 8,
     alignItems: 'center',
@@ -176,34 +199,40 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
   },
-  outletInfo: {
+  channelInfo: {
     flex: 1,
+    flexDirection: 'column',
   },
   outletName: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 2,
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#111827',
+    lineHeight: 20,
+    marginBottom: 0,
   },
   followers: {
-    fontSize: 13,
-    color: '#666666',
+    fontSize: 12,
+    fontWeight: '400',
+    color: '#0F172A',
+    lineHeight: 16,
+  },
+  actionsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   followButton: {
-    backgroundColor: '#E0E0E0',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+    backgroundColor: 'rgba(14, 15, 17, 0.04)',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 9999,
   },
   followButtonText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#000000',
-  },
-  neutralTrend: {
-    width: 16,
-    height: 2,
-    backgroundColor: '#CCCCCC',
+    color: '#455468',
+    lineHeight: 20,
+    letterSpacing: -0.0143,
   },
   viewMore: {
     alignItems: 'center',
@@ -215,4 +244,3 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
-

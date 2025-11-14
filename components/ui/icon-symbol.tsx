@@ -28,6 +28,8 @@ const MAPPING = {
   'list.bullet': 'list',
   'bubble.left.and.bubble.right': 'forum',
   'chart.line.uptrend.xyaxis': 'trending-up',
+  'chevron.up': 'keyboard-arrow-up',
+  'minus': 'remove',
 } as IconMapping;
 
 /**

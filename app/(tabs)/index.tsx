@@ -50,7 +50,7 @@ export default function NewsScreen() {
           followers="1.2M"
           onMenuPress={() => {}}
         />
-        <AdvertisementBanner height={120} />
+        <AdvertisementBanner height={100} />
         {newsArticles.map((article) => (
           <NewsArticleCard key={article.id} article={article} />
         ))}
