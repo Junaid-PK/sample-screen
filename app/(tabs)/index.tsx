@@ -27,9 +27,8 @@ export default function NewsScreen() {
   const handleTabChange = (tab: 'news' | 'rankings') => {
     if (tab === 'rankings') {
       router.push('/(tabs)/explore');
-    } else {
-      router.push('/(tabs)/');
     }
+    // If already on news tab, no need to navigate
   };
 
   return (

@@ -24,10 +24,9 @@ export default function RankingsScreen() {
 
   const handleTabChange = (tab: 'news' | 'rankings') => {
     if (tab === 'news') {
-      router.push('/(tabs)/');
-    } else {
-      router.push('/(tabs)/explore');
+      router.push('/(tabs)');
     }
+    // If already on rankings tab, no need to navigate
   };
 
   return (
