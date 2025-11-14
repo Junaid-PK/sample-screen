@@ -3,19 +3,30 @@ import BottomNavigationBar from '@/components/BottomNavigationBar';
 import RankingsList from '@/components/RankingsList';
 import TopNavigationBar from '@/components/TopNavigationBar';
 import { rankingOutlets } from '@/constants/data';
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import { useRouter, usePathname } from 'expo-router';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RankingsScreen() {
   const router = useRouter();
+  const pathname = usePathname();
   const [activeTab, setActiveTab] = useState<'news' | 'rankings'>('rankings');
 
+  useEffect(() => {
+    // Sync activeTab with current route
+    if (pathname?.includes('explore')) {
+      setActiveTab('rankings');
+    } else {
+      setActiveTab('news');
+    }
+  }, [pathname]);
+
   const handleTabChange = (tab: 'news' | 'rankings') => {
-    setActiveTab(tab);
     if (tab === 'news') {
       router.push('/(tabs)/');
+    } else {
+      router.push('/(tabs)/explore');
     }
   };
 

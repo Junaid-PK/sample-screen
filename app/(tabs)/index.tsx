@@ -5,19 +5,30 @@ import NewsArticleCard from '@/components/NewsArticleCard';
 import ProfileHeader from '@/components/ProfileHeader';
 import TopNavigationBar from '@/components/TopNavigationBar';
 import { contentSources, newsArticles } from '@/constants/data';
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import { useRouter, usePathname } from 'expo-router';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function NewsScreen() {
   const router = useRouter();
+  const pathname = usePathname();
   const [activeTab, setActiveTab] = useState<'news' | 'rankings'>('news');
 
+  useEffect(() => {
+    // Sync activeTab with current route
+    if (pathname?.includes('explore')) {
+      setActiveTab('rankings');
+    } else {
+      setActiveTab('news');
+    }
+  }, [pathname]);
+
   const handleTabChange = (tab: 'news' | 'rankings') => {
-    setActiveTab(tab);
     if (tab === 'rankings') {
       router.push('/(tabs)/explore');
+    } else {
+      router.push('/(tabs)/');
     }
   };
 
