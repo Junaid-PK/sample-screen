@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
   semiCircleIconImage: {
     width: 16,
     height: 16,
-    marginTop: 1,
   },
   shareIconContainer: {
     width: 35,
