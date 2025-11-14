@@ -17,18 +17,18 @@ export default function NewsArticleCard({ article }: NewsArticleCardProps) {
       )}
       <Text style={styles.articleText}>{article.text}</Text>
       <View style={styles.footer}>
-        <Text style={styles.timestamp}>{article.timestamp}</Text>
-        <View style={styles.actions}>
+        <View style={styles.leftSection}>
+          <Text style={styles.timestamp}>{article.timestamp}</Text>
           <TouchableOpacity style={styles.iconCircle} activeOpacity={0.7}>
             <Text style={styles.emoji}>😊</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconCircle} activeOpacity={0.7}>
             <IconSymbol name="bubble.left" size={16} color="#666666" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconCircle} activeOpacity={0.7}>
-            <IconSymbol name="paperplane" size={16} color="#666666" />
-          </TouchableOpacity>
         </View>
+        <TouchableOpacity style={styles.iconCircle} activeOpacity={0.7}>
+          <IconSymbol name="paperplane" size={16} color="#666666" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -42,6 +42,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 12,
     position: 'relative',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   breakingBadge: {
     position: 'absolute',
@@ -71,14 +76,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 8,
   },
-  timestamp: {
-    fontSize: 13,
-    color: '#999999',
-  },
-  actions: {
+  leftSection: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+  },
+  timestamp: {
+    fontSize: 13,
+    color: '#999999',
   },
   iconCircle: {
     width: 32,
