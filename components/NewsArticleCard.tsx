@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 20,
     position: 'relative',
+    overflow: 'visible',
   },
   cardContainer: {
     backgroundColor: '#FFFFFF',
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 8,
     paddingLeft: 0,
-    marginTop: 0,
+    marginTop: -1,
     position: 'relative',
     zIndex: 10,
     elevation: 4,
