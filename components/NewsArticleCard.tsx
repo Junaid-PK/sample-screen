@@ -10,42 +10,50 @@ interface NewsArticleCardProps {
 export default function NewsArticleCard({ article }: NewsArticleCardProps) {
   return (
     <View style={styles.wrapper}>
-      <View style={styles.container}>
+      {/* Main Card Container */}
+      <View style={[styles.cardContainer, article.isBreaking && styles.cardContainerWithBadge]}>
         {article.isBreaking && (
           <View style={styles.breakingBadge}>
             <Text style={styles.breakingText}>BREAKING</Text>
           </View>
         )}
-        <Text style={[styles.articleText, article.isBreaking && styles.articleTextWithBadge]}>
-          {article.text}
-        </Text>
+        <Text style={styles.articleText}>{article.text}</Text>
       </View>
-      <View style={styles.footer}>
-        <View style={styles.leftSection}>
-          <Text style={styles.timestamp}>{article.timestamp}</Text>
-          <TouchableOpacity style={styles.smallIconCircle} activeOpacity={0.7}>
-            <ExpoImage
-              source={require('@/assets/images/emoji-icon.png')}
-              style={styles.iconImage}
-              contentFit="contain"
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.smallIconCircle} activeOpacity={0.7}>
-            <ExpoImage
-              source={require('@/assets/images/message-icon.png')}
-              style={styles.iconImage}
-              contentFit="contain"
-            />
-          </TouchableOpacity>
+
+      {/* Engagement Bar - Below the card */}
+      <View style={styles.engagementBar}>
+        {/* Time Section - Left side */}
+        <View style={styles.timeSection}>
+          <View style={styles.timeRow}>
+            <Text style={styles.timestamp}>{article.timestamp}</Text>
+            <View style={styles.semiCircleIconsContainer}>
+              <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
+                <ExpoImage
+                  source={require('@/assets/images/emoji-icon.png')}
+                  style={styles.semiCircleIconImage}
+                  contentFit="contain"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
+                <ExpoImage
+                  source={require('@/assets/images/message-icon.png')}
+                  style={styles.semiCircleIconImage}
+                  contentFit="contain"
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
+
+        {/* Share Icon - Right side, overlapping card */}
+        <TouchableOpacity style={styles.shareIconContainer} activeOpacity={0.7}>
+          <ExpoImage
+            source={require('@/assets/images/share-icon.png')}
+            style={styles.shareIconImage}
+            contentFit="contain"
+          />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.shareIconContainer} activeOpacity={0.7}>
-        <ExpoImage
-          source={require('@/assets/images/share-icon.png')}
-          style={styles.shareIconImage}
-          contentFit="contain"
-        />
-      </TouchableOpacity>
     </View>
   );
 }
@@ -56,11 +64,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     position: 'relative',
   },
-  container: {
+  cardContainer: {
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     padding: 16,
-    paddingTop: 16,
     position: 'relative',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -73,17 +80,22 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     backgroundColor: '#FF0000',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    paddingHorizontal: 7,
+    paddingVertical: 5,
     borderTopLeftRadius: 12,
-    borderBottomRightRadius: 4,
+    borderBottomRightRadius: 5,
     zIndex: 1,
   },
   breakingText: {
     color: '#FFFFFF',
     fontSize: 10,
-    fontWeight: '700',
+    fontWeight: '900',
+    lineHeight: 16,
+    textAlign: 'center',
     textTransform: 'uppercase',
+  },
+  cardContainerWithBadge: {
+    paddingTop: 28,
   },
   articleText: {
     fontSize: 15,
@@ -91,26 +103,37 @@ const styles = StyleSheet.create({
     color: '#000000',
     marginTop: 0,
   },
-  articleTextWithBadge: {
-    marginTop: 20,
-  },
-  footer: {
+  engagementBar: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
     justifyContent: 'space-between',
-    marginTop: -1,
-    paddingHorizontal: 4,
+    alignItems: 'center',
+    paddingRight: 8,
+    paddingLeft: 0,
+    marginTop: 0,
+    position: 'relative',
   },
-  leftSection: {
+  timeSection: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    gap: 8,
+    paddingLeft: 10,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
   },
   timestamp: {
-    fontSize: 13,
+    fontSize: 12,
+    fontWeight: '500',
+    lineHeight: 18,
     color: '#999999',
+    letterSpacing: -0.0167,
   },
-  smallIconCircle: {
+  semiCircleIconsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  semiCircleIcon: {
     width: 28,
     height: 14,
     borderTopLeftRadius: 14,
@@ -124,26 +147,28 @@ const styles = StyleSheet.create({
     borderColor: '#E0E0E0',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     overflow: 'hidden',
   },
-  iconImage: {
+  semiCircleIconImage: {
     width: 16,
     height: 16,
-    marginTop: 2,
+    marginTop: 1,
   },
   shareIconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 35,
+    height: 35,
+    borderRadius: 17.5,
     borderWidth: 1,
     borderColor: '#E0E0E0',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 6,
+    paddingVertical: 4,
     position: 'absolute',
-    right: 0,
-    bottom: 0,
+    right: 8,
+    top: -17.5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
@@ -155,4 +180,3 @@ const styles = StyleSheet.create({
     height: 20,
   },
 });
-
