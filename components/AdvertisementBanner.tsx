@@ -2,12 +2,16 @@ import { Image } from 'expo-image';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function AdvertisementBanner() {
+interface AdvertisementBannerProps {
+  height?: number;
+}
+
+export default function AdvertisementBanner({ height = 180 }: AdvertisementBannerProps) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { minHeight: height }]}>
       <Image
         source={require('@/assets/images/ad-banner.png')}
-        style={styles.image}
+        style={[styles.image, { height }]}
         contentFit="cover"
       />
       <View style={styles.adLabel}>
@@ -24,11 +28,9 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
     position: 'relative',
-    minHeight: 180,
   },
   image: {
     width: '100%',
-    height: 180,
     borderRadius: 12,
   },
   adLabel: {

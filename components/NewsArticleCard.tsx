@@ -138,7 +138,8 @@ const styles = StyleSheet.create({
   iconButton: {
     width: 28,
     height: 22,
-    borderRadius: 6,
+    borderRadius: 14,
+    padding: 6,
     borderWidth: 1,
     borderColor: '#E0E0E0',
     backgroundColor: '#FFFFFF',
