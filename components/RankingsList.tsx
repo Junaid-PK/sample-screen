@@ -55,7 +55,10 @@ export default function RankingsList({ outlets }: RankingsListProps) {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Outlets</Text>
         <TouchableOpacity style={styles.sortButton} activeOpacity={0.7}>
-          <IconSymbol name="arrows.down.up" size={18} color="#455468" />
+          <View style={styles.sortIconContainer}>
+            <IconSymbol name="arrow.up" size={9} color="#455468" />
+            <IconSymbol name="arrow.down" size={9} color="#455468" />
+          </View>
           <Text style={styles.sortText}>Followers</Text>
         </TouchableOpacity>
       </View>
@@ -119,6 +122,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E5E7EB',
     backgroundColor: '#FFFFFF',
+  },
+  sortIconContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 18,
+    gap: 0,
   },
   sortText: {
     fontSize: 14,
