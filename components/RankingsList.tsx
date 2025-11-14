@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
   sortText: {
     fontSize: 14,
     color: '#666666',
+    fontWeight: '400',
   },
   list: {
     flex: 1,

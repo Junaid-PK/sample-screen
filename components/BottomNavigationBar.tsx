@@ -14,7 +14,7 @@ export default function BottomNavigationBar({ activeTab }: BottomNavigationBarPr
         <TouchableOpacity style={styles.navItem} activeOpacity={0.7}>
           <View style={[styles.iconContainer, activeTab === 'list' && styles.activeIconContainer]}>
             <View style={[styles.listIcon, activeTab === 'list' && styles.activeListIcon]}>
-              <IconSymbol name="list.bullet" size={20} color="#FFFFFF" />
+              <IconSymbol name="list.bullet" size={20} color={activeTab === 'list' ? '#FFFFFF' : '#666666'} />
             </View>
           </View>
           {activeTab === 'list' && <Text style={styles.navLabel}>List</Text>}
