@@ -27,20 +27,24 @@ export default function NewsArticleCard({ article }: NewsArticleCardProps) {
           <View style={styles.timeRow}>
             <Text style={styles.timestamp}>{article.timestamp}</Text>
             <View style={styles.semiCircleIconsContainer}>
-              <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
-                <ExpoImage
-                  source={require('@/assets/images/emoji-icon.png')}
-                  style={styles.semiCircleIconImage}
-                  contentFit="contain"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
-                <ExpoImage
-                  source={require('@/assets/images/message-icon.png')}
-                  style={styles.semiCircleIconImage}
-                  contentFit="contain"
-                />
-              </TouchableOpacity>
+              <View style={styles.semiCircleWrapper}>
+                <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
+                  <ExpoImage
+                    source={require('@/assets/images/emoji-icon.png')}
+                    style={styles.semiCircleIconImage}
+                    contentFit="contain"
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.semiCircleWrapper}>
+                <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
+                  <ExpoImage
+                    source={require('@/assets/images/message-icon.png')}
+                    style={styles.semiCircleIconImage}
+                    contentFit="contain"
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>
@@ -133,20 +137,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 5,
   },
-  semiCircleIcon: {
+  semiCircleWrapper: {
     width: 28,
     height: 14,
-    borderTopLeftRadius: 14,
-    borderTopRightRadius: 14,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
+    overflow: 'hidden',
+  },
+  semiCircleIcon: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
     borderWidth: 1,
     borderColor: '#E0E0E0',
-    borderBottomWidth: 0,
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-    overflow: 'hidden',
+    marginTop: -14,
   },
   semiCircleIconImage: {
     width: 16,
