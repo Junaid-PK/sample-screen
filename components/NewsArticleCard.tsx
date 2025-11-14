@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 8,
     paddingLeft: 0,
-    marginTop: 0,
+    marginTop: 1,
     position: 'relative',
     zIndex: 2,
   },
