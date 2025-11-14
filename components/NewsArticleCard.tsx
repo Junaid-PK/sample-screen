@@ -26,40 +26,34 @@ export default function NewsArticleCard({ article }: NewsArticleCardProps) {
         <View style={styles.timeSection}>
           <View style={styles.timeRow}>
             <Text style={styles.timestamp}>{article.timestamp}</Text>
+            <View style={styles.iconButtonsContainer}>
+              <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+                <ExpoImage
+                  source={require('@/assets/images/emoji-icon.png')}
+                  style={styles.iconImage}
+                  contentFit="contain"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+                <ExpoImage
+                  source={require('@/assets/images/message-icon.png')}
+                  style={styles.iconImage}
+                  contentFit="contain"
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
 
-      {/* Semi-circle icons - Positioned absolutely */}
-      <View style={styles.semiCircleIconsContainer}>
-        <View style={styles.semiCircleWrapper}>
-          <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
-            <ExpoImage
-              source={require('@/assets/images/emoji-icon.png')}
-              style={styles.semiCircleIconImage}
-              contentFit="contain"
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.semiCircleWrapper}>
-          <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
-            <ExpoImage
-              source={require('@/assets/images/message-icon.png')}
-              style={styles.semiCircleIconImage}
-              contentFit="contain"
-            />
-          </TouchableOpacity>
-        </View>
+        {/* Share Icon - Right side, overlapping card */}
+        <TouchableOpacity style={styles.shareIconContainer} activeOpacity={0.7}>
+          <ExpoImage
+            source={require('@/assets/images/share-icon.png')}
+            style={styles.shareIconImage}
+            contentFit="contain"
+          />
+        </TouchableOpacity>
       </View>
-
-      {/* Share Icon - Right side, overlapping card */}
-      <TouchableOpacity style={styles.shareIconContainer} activeOpacity={0.7}>
-        <ExpoImage
-          source={require('@/assets/images/share-icon.png')}
-          style={styles.shareIconImage}
-          contentFit="contain"
-        />
-      </TouchableOpacity>
     </View>
   );
 }
@@ -69,7 +63,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 20,
     position: 'relative',
-    overflow: 'visible',
   },
   cardContainer: {
     backgroundColor: '#FFFFFF',
@@ -81,7 +74,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-    overflow: 'visible',
+    zIndex: 1,
   },
   breakingBadge: {
     position: 'absolute',
@@ -117,10 +110,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 8,
     paddingLeft: 0,
-    marginTop: -1,
+    marginTop: 1,
     position: 'relative',
-    zIndex: 10,
-    elevation: 4,
+    zIndex: 2,
   },
   timeSection: {
     flexDirection: 'row',
@@ -138,35 +130,22 @@ const styles = StyleSheet.create({
     color: '#999999',
     letterSpacing: -0.0167,
   },
-  semiCircleIconsContainer: {
+  iconButtonsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
-    position: 'absolute',
-    left: 26,
-    bottom: 0,
-    zIndex: 10,
-    elevation: 4,
   },
-  semiCircleWrapper: {
+  iconButton: {
     width: 28,
-    height: 14,
-    overflow: 'hidden',
-    zIndex: 11,
-    elevation: 5,
-  },
-  semiCircleIcon: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    height: 22,
+    borderRadius: 6,
     borderWidth: 1,
     borderColor: '#E0E0E0',
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -14,
   },
-  semiCircleIconImage: {
+  iconImage: {
     width: 16,
     height: 16,
   },
