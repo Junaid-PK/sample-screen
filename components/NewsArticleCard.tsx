@@ -26,38 +26,40 @@ export default function NewsArticleCard({ article }: NewsArticleCardProps) {
         <View style={styles.timeSection}>
           <View style={styles.timeRow}>
             <Text style={styles.timestamp}>{article.timestamp}</Text>
-            <View style={styles.semiCircleIconsContainer}>
-              <View style={styles.semiCircleWrapper}>
-                <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
-                  <ExpoImage
-                    source={require('@/assets/images/emoji-icon.png')}
-                    style={styles.semiCircleIconImage}
-                    contentFit="contain"
-                  />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.semiCircleWrapper}>
-                <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
-                  <ExpoImage
-                    source={require('@/assets/images/message-icon.png')}
-                    style={styles.semiCircleIconImage}
-                    contentFit="contain"
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
           </View>
         </View>
-
-        {/* Share Icon - Right side, overlapping card */}
-        <TouchableOpacity style={styles.shareIconContainer} activeOpacity={0.7}>
-          <ExpoImage
-            source={require('@/assets/images/share-icon.png')}
-            style={styles.shareIconImage}
-            contentFit="contain"
-          />
-        </TouchableOpacity>
       </View>
+
+      {/* Semi-circle icons - Positioned absolutely */}
+      <View style={styles.semiCircleIconsContainer}>
+        <View style={styles.semiCircleWrapper}>
+          <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
+            <ExpoImage
+              source={require('@/assets/images/emoji-icon.png')}
+              style={styles.semiCircleIconImage}
+              contentFit="contain"
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.semiCircleWrapper}>
+          <TouchableOpacity style={styles.semiCircleIcon} activeOpacity={0.7}>
+            <ExpoImage
+              source={require('@/assets/images/message-icon.png')}
+              style={styles.semiCircleIconImage}
+              contentFit="contain"
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Share Icon - Right side, overlapping card */}
+      <TouchableOpacity style={styles.shareIconContainer} activeOpacity={0.7}>
+        <ExpoImage
+          source={require('@/assets/images/share-icon.png')}
+          style={styles.shareIconImage}
+          contentFit="contain"
+        />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -140,6 +142,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
+    position: 'absolute',
+    left: 26,
+    bottom: 0,
+    zIndex: 10,
+    elevation: 4,
   },
   semiCircleWrapper: {
     width: 28,
