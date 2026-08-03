@@ -1,50 +1,70 @@
-# Welcome to your Expo app 👋
+# News Dashboard UI Prototype
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A cross-platform news and publisher-ranking interface built with Expo, React Native, and TypeScript. The project explores how a dense content experience can stay navigable on a small screen through reusable cards, compact ranking rows, and route-driven tabs.
 
-## Get started
+## What is implemented
 
-1. Install dependencies
+- News and rankings screens connected with Expo Router
+- Horizontally scrollable content-source selector
+- Publisher profile and follower summary
+- Reusable article cards with breaking-news, reaction, comment, and share states
+- Ranked outlet list with medal, follower, follow, and trend treatments
+- Advertisement placements and custom top and bottom navigation
+- Shared components and typed fixture models
+- iOS, Android, and web targets from one React Native codebase
 
-   ```bash
-   npm install
-   ```
+## Project structure
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+app/
+  (tabs)/          Route-level news and rankings screens
+components/        Reusable navigation, content, profile, and ranking UI
+constants/         Typed prototype data and shared theme values
+assets/images/     Local icons and advertising artwork
+hooks/             Platform-aware colour and theme helpers
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+The route files compose feature-level components while `constants/data.ts` provides typed fixtures for repeatable UI development.
 
-## Learn more
+## Run locally
 
-To learn more about developing your project with Expo, look at the following resources:
+Requirements: a current Node.js LTS release and npm.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm ci
+npm start
+```
 
-## Join the community
+From the Expo terminal, open the project in Expo Go, an iOS simulator, an Android emulator, or a browser. The platform-specific commands are also available directly:
 
-Join our community of developers creating universal apps.
+```bash
+npm run ios
+npm run android
+npm run web
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Check the source before committing changes:
+
+```bash
+npm run check
+```
+
+The same lint, type-check, and static web-export gates run in GitHub Actions on every push and pull request.
+
+## Data and product boundary
+
+This repository is a UI prototype. News stories, publishers, follower counts, rankings, and trends are deterministic fixtures stored in the repository. It does not connect to a news API, authenticate users, persist interactions, deliver notifications, or represent live editorial data. Some buttons intentionally demonstrate visual and interaction states without completing a backend action.
+
+Those constraints keep the project focused on responsive React Native composition, navigation, and component design. A production implementation would add an API boundary, server-owned ranking rules, persisted user preferences, accessible interaction feedback, analytics, and automated tests.
+
+## Technology
+
+- Expo 54 and Expo Router
+- React 19 and React Native 0.81
+- TypeScript
+- React Navigation
+- Expo Image, Haptics, Symbols, and platform utilities
+
+## Author
+
+Built by [Junaid Hussnain](https://hijunaid.com/). More engineering work and notes are available on the [portfolio](https://hijunaid.com/) and [GitHub profile](https://github.com/Junaid-PK).
